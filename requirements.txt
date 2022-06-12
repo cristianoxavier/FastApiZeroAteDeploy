@@ -1,0 +1,9 @@
+# API
+fastapi==0.78.0
+uvicorn==0.17.6
+black==22.3.0
+requests==2.28.0
+
+
+# TESTS
+pytest==7.1.2
