@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
-from models.lista_de_compras_model import ListaDeComprasResponse, ProdutoRequest, ListaDeComprasModel
+from models.lista_de_compras_model import ListaDeComprasResponse, ProdutoRequest, ListaDeCompras
 from shared.dependencies import get_db
 
 router = APIRouter(prefix="/lista-de-compras")
@@ -28,10 +28,14 @@ def get_lista_compras():
 
 
 @router.post("/", response_model=ListaDeComprasResponse, status_code=201)
-def post_lista_compras(input: ProdutoRequest, db: Session = Depends(get_db)) -> ListaDeComprasResponse:
-    produto = ListaDeComprasModel(**input.dict())
+def criar_conta(input: ProdutoRequest,
+                db: Session = Depends(get_db)) -> ListaDeComprasResponse:
+    item = ListaDeCompras(
+        **input.dict()
+    )
 
-    db.add(produto)
+    db.add(item)
     db.commit()
-    db.refresh(produto)
-    return ListaDeComprasResponse(**produto.__dict__)
+    db.refresh(item)
+
+    return item
