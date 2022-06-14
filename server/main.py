@@ -1,6 +1,6 @@
 import uvicorn
 from fastapi import FastAPI
-from shared.database import engine, Base
+from server.shared.database import engine, Base
 from lista_de_compras.routers import lista_de_compras_router
 
 
