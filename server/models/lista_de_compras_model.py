@@ -4,7 +4,7 @@ from server.shared.database import Base
 
 
 class ListaDeCompras(Base):
-    __tablename__ = 'lista_de_compras'
+    __tablename__ = 'tb_lista_de_compras'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     produto = Column(String(30))
