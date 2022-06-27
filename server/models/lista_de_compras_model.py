@@ -23,6 +23,6 @@ class ListaDeComprasResponse(BaseModel):
 
 
 class ProdutoRequest(BaseModel):
-    produto: str = Field()
+    produto: str = Field(min_length=3, max_length=20)
     quantidade: int = Field()
     medida: str = Field()
